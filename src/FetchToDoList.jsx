@@ -1,6 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import ToDoList from './ToDoList';
+import ToDoInput from './ToDoInput';
 
 const FetchToDoList = ({ url, showCompleted }) => {
   const [todos, setTodos] = useState();
@@ -33,7 +34,21 @@ const FetchToDoList = ({ url, showCompleted }) => {
     setTodos(newTodos);
   };
 
-  return <ToDoList todos={filteredTodos} onChange={handleChange} />;
+  const handleAdd = (title) => {
+    const newTodo = {
+      id: Math.max(...todos.map((todo) => todo.id)) + 1,
+      title,
+      isCompleted: false,
+    };
+    setTodos([...todos, newTodo]);
+  };
+
+  return (
+    <>
+      <ToDoList todos={filteredTodos} onChange={handleChange} />
+      <ToDoInput onAdd={handleAdd} />
+    </>
+  );
 };
 
 export default FetchToDoList;

@@ -17,7 +17,12 @@ const Header = ({ text }) => {
     >
       <h1>
         {text}
-        <button onClick={toggleTheme}>{theme.name}</button>
+        <button
+          onClick={toggleTheme}
+          style={{ background: theme.primaryColor, color: theme.textColor }}
+        >
+          {theme.name}
+        </button>
       </h1>
     </header>
   );
