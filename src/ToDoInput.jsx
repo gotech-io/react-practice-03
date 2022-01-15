@@ -18,6 +18,7 @@ const ToDoInput = ({ onAdd }) => {
         onChange={(e) => setText(e.currentTarget.value)}
       />
       <button
+        disabled={!text}
         onClick={handleAdd}
         style={{ background: theme.primaryColor, color: theme.textColor }}
       >
