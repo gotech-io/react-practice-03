@@ -1,22 +1,25 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Header from './Header';
 import FetchToDoList from './FetchToDoList';
 import Toggle from './Toggle';
+import ThemeProvider from './themeContext';
 
 const App = () => {
   const [showCompleted, setShowCompleted] = useState(true);
 
   return (
-    <div className="App">
-      <Header text="TODO LIST" />
-      <Toggle
-        text="Show Completed"
-        initialState={showCompleted}
-        onChange={setShowCompleted}
-      />
-      <FetchToDoList url="./todos.json" showCompleted={showCompleted} />
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <Header text="TODO LIST" />
+        <Toggle
+          text="Show Completed"
+          initialState={showCompleted}
+          onChange={setShowCompleted}
+        />
+        <FetchToDoList url="./todos.json" showCompleted={showCompleted} />
+      </div>
+    </ThemeProvider>
   );
 };
 

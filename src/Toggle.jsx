@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { ThemeContext } from './themeContext';
 
 const Toggle = ({ initialState, text, onChange }) => {
   const [isActive, setIsActive] = useState(initialState);
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <div>
+    <div style={{ background: theme.primaryColor, color: theme.textColor }}>
       <label>
         <input
           type="checkbox"

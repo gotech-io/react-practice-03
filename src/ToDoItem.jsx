@@ -1,8 +1,12 @@
 import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { ThemeContext } from './themeContext';
 
 const ToDoItem = ({ todo, onChange }) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
-    <li>
+    <li style={{ background: theme.primaryColor, color: theme.textColor }}>
       <input
         type="checkbox"
         checked={todo.isCompleted}
